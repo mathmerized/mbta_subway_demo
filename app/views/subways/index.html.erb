@@ -1,0 +1,30 @@
+<div class="container">
+    <% if @errors.any? %>
+        <div class="alert alert-danger" role="alert">
+            We encountered the following errors getting all routes:
+            <ul>
+                <% @errors.each do |error| %>
+                    <li><%= error %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div id="subway-lines">
+        <table class="table table-striped">
+            <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>View Stops</th>
+            </tr>
+            <% @data.each do |row| %>
+            <tr>
+                <td><%= row['id'] %></td>
+                <td><%= row['attributes']['long_name'] %></td>
+                <td><%= link_to 'Stops', subway_path(row['id'])%></td>
+            </tr>
+            <% end %>
+        </table>
+    </div>
+</div>
+

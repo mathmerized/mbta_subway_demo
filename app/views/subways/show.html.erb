@@ -1,0 +1,20 @@
+<% if @errors.any? %>
+    <div class="alert alert-danger" role="alert">
+        We encountered the following errors getting stops for <%= params[:id]%>:
+        <ul>
+            <% @errors.each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<div id="stops">
+    <% if @data.any? %>
+        <ul class="list-group">
+            <% @data.each do |row| %>
+                <li class="list-group-item"><%= row['attributes']['name'] %></li>
+            <% end %>
+        </ul>
+    <% end %>
+</div>
